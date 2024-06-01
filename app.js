@@ -8,6 +8,7 @@ import orderRoutes from "./routes/orderRoutes.js";
 import paymentRoutes from "./routes/paymentRoutes.js";
 import dashBoardRoutes from "./routes/adminRoutes/dashBoardRoutes.js";
 import { connectDB } from "./utils/dbConnection.js";
+import cors from "cors";
 import Stripe from "stripe";
 
 dotenv.config();
@@ -17,6 +18,7 @@ export const stripe = new Stripe(process.env.STRIPE_KEY);
 
 const app = express();
 app.use(express.json());
+app.use(cors({ origin: "http://localhost:5173" }));
 
 const port = 8000;
 connectDB();

@@ -12,7 +12,18 @@ export const createPayment = errorHandler(async (req, res, next) => {
 
   const paymentIntent = await stripe.paymentIntents.create({
     amount: Number(amount) * 100,
-    currency: "INR",
+    currency: "inr",
+    description: "E comerse shopping",
+    shipping: {
+      name: "Jenny Rosen",
+      address: {
+        line1: "510 Townsend St",
+        postal_code: "98140",
+        city: "San Francisco",
+        state: "CA",
+        country: "US",
+      },
+    },
   });
 
   res.status(200).send({

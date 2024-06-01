@@ -1,3 +1,4 @@
+import { stripe } from "../app.js";
 import Order from "../models/orderModel.js";
 import errorHandler from "../utils/asyncErrorHandler.js";
 import { reduceStock } from "../utils/cachingRevalidate.js";
@@ -18,17 +19,17 @@ export const newOrderController = errorHandler(async (req, res, next) => {
   } = req.body;
 
   // validating the data get or not
-  if (
-    !shippingInfo ||
-    !subtotal ||
-    !tax ||
-    !shippingCharges ||
-    !discout ||
-    !total ||
-    !orderItems
-  ) {
-    next(new ErrorClass(400, "All fileds are required", false));
-  }
+  // if (
+  //   !shippingInfo ||
+  //   !subtotal ||
+  //   !tax ||
+  //   !shippingCharges ||
+  //   !discout ||
+  //   !total ||
+  //   !orderItems
+  // ) {
+  //   return next(new ErrorClass(400, "All fileds are required", false));
+  // }
 
   // now creating the order
   const order = await Order.create({
