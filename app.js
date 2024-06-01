@@ -18,7 +18,8 @@ export const stripe = new Stripe(process.env.STRIPE_KEY);
 
 const app = express();
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:5173" }));
+// app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({ origin: "https://kart-mate--five.vercel.app" }));
 
 const port = 8000;
 connectDB();
